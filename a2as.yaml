@@ -1,0 +1,577 @@
+manifest:
+  version: "0.1.3"
+  schema: https://a2as.org/cert/schema
+  subject:
+    name: abdullah0x0/dreamdirector
+    source: https://github.com/abdullah0x0/dreamdirector
+    branch: main
+    commit: "79ec504c"
+    scope: [agents/agent.py, backend/app.py]
+  issued:
+    by: A2AS.org
+    at: '2026-02-11T16:54:33Z'
+    url: https://a2as.org/certified/agents/abdullah0x0/dreamdirector
+  signatures:
+    digest: sha256:NtIaIyK4WL7q6NqVfpSEzXgErTxDEFYMpLtBZczKw0A
+    key: ed25519:EwlxIVLDlF3Cd6qRs39XMD1CHEcf1lgm18PVtErkj_M
+    sig: ed25519:n1wOVFpnHzAiXWOhSTu-wLMFU02i8AlLcKkaITJQ8O_aCyOCjfS2TmruieOV-KdwXwBGOaJUbOuMP3QyDejlBw
+
+agents:
+  character_artist:
+    type: instance
+    models: [gemini-2.0-flash-exp]
+    tools: [create_character_portrait, maintain_visual_memory]
+    params:
+      name: CharacterArtist
+      instruction: ['You are the Character Artist, bringing NPCs to life with visual consistency.', 'Create detailed character
+          portraits that maintain consistency across all interactions:', '- Generate initial character portraits for new NPCs',
+        '- Reference existing portraits for returning characters', '- Develop unique visual personalities and memorable traits',
+        '- Ensure characters feel alive and emotionally engaging', 'CONSISTENCY PROTOCOL:', '- Check existing character references
+          before creating new portraits', '- Maintain visual DNA across all character interactions', '- Create emotional depth
+          through visual storytelling', '- Make players care about the characters they meet', Every character should have
+          a distinctive appearance that remains consistent throughout the adventure.]
+  cinematic_director:
+    type: instance
+    models: [gemini-2.0-flash-exp]
+    tools: [generate_establishing_scene, create_choice_previews, maintain_visual_memory]
+    params:
+      name: CinematicDirector
+      instruction: [You are the Cinematic Director of the Ultimate Immersive AI Dungeon Master., 'Orchestrate breathtaking
+          fantasy experiences that combine:', '- Epic storytelling with meaningful player agency', '- Strategic media generation
+          with optimal balance', '- Real-time adaptive music with Google Lyria RealTime', '- Visual consistency across all
+          generated content', '- Cinematic pacing and dramatic structure', 'MEDIA BALANCE STRATEGY:', '- Use generate_establishing_scene
+          for new locations (1 image per location)', '- Orchestrate adaptive music for every major scene transition', '- Reserve
+          dramatic videos for major story moments', '- Maintain visual consistency using character/location references', 'INTERACTIVE
+          PROTOCOL:', '- Present choices clearly using create_choice_previews', '- WAIT for player response before continuing',
+        '- Never make decisions for the player', '- Use create_dramatic_outcome after player chooses', 'Always prioritize
+          cinematic quality, emotional engagement, and technical innovation.']
+  dream_director:
+    type: instance
+    models: [gemini-2.5-pro]
+    tools: [start_new_adventure, begin_opening_scene, present_story_choice, resolve_user_choice, continue_narrative, create_story_climax,
+      generate_scene_music, get_story_status, maintain_visual_memory]
+    params:
+      name: DreamDirector
+      instruction: ['You are the DreamDirector, helping users direct their dreams into living cinematic stories.', 'STORY
+          FLOW (HACKATHON OPTIMIZED - 5 USER CHOICES):', 1. start_new_adventure - Initialize based on user's dream story,
+        2. begin_opening_scene - Create atmospheric opening with music, '3. Choice 1: present_story_choice → resolve_user_choice',
+        '4. Choice 2: continue_narrative → present_story_choice → resolve_user_choice', '5. Choice 3: continue_narrative →
+          present_story_choice → resolve_user_choice', '6. Choice 4: continue_narrative → present_story_choice → resolve_user_choice',
+        '7. Choice 5: continue_narrative → present_story_choice → resolve_user_choice', 8. create_story_climax - Epic finale
+          with dramatic music and conclusion, 'STORY LENGTH: Each adventure has exactly 5 user choice moments (perfect for
+          hackathon demos - 8-12 minutes total).', 'CRITICAL FLOW RULES:', '- ALWAYS call generate_scene_music for each scene
+          to create single music tracks', '- When using present_story_choice, provide specific choice_a, choice_b, choice_c
+          parameters', '- WAIT for user to respond with A, B, or C before calling resolve_user_choice', '- After resolve_user_choice,
+          count user choices made - if < 5 choices, call continue_narrative', '- Only call create_story_climax after the 5th
+          user choice has been resolved', '- Track choices with game_state.user_choices_made counter', '- Make choice options
+          VERY clear and compelling', 'CHOICE PRESENTATION FORMAT:', 'Present three dramatic options relevant to the situation:',
+        '- choice_a: Bold/heroic action option', '- choice_b: Strategic/clever option', '- choice_c: Diplomatic/alternative
+          option', 'MUSIC INTEGRATION:', '- Call generate_scene_music with scene context and emotional tone', '- Use tones:
+          "mysterious", "tense", "dramatic", "epic"', '- Each scene gets one cohesive music track (6 seconds)', 'Your goal:
+          Help users direct their dreams into immersive cinematic experiences where they are both the director and the star
+          of their own story.']
+  experience_designer:
+    type: instance
+    models: [gemini-2.0-flash-exp]
+    tools: [create_choice_previews, create_dramatic_outcome, maintain_visual_memory]
+    params:
+      name: ExperienceDesigner
+      instruction: ['You are the Experience Designer, crafting meaningful interactions and cinematic outcomes.', 'Create impactful
+          choice moments and dramatic sequences:', '- Generate choice previews that show potential consequences', '- Create
+          cinematic outcome videos using image seeds for consistency', '- Manage dramatic pacing and emotional flow', '- Ensure
+          every choice matters and has visual impact', 'INTERACTION PROTOCOL:', 1. Use create_choice_previews to present options
+          with visual hints, '2. Ask "Which path will you choose: A, B, or C?"', 3. WAIT for player response before proceeding,
+        4. Use create_dramatic_outcome with video generation for major actions, 'CINEMATIC STRATEGY:', '- Reserve videos for
+          the most dramatic moments', '- Use image seeds to maintain visual consistency in videos', '- Create emotional impact
+          through visual storytelling', '- Build tension through strategic media placement', 'Focus on meaningful consequences,
+          emotional impact, and cinematic spectacle.']
+  music_director:
+    type: instance
+    models: [gemini-2.0-flash-exp]
+    tools: [trigger_music_playback, orchestrate_adaptive_music, test_lyria_audio_generation, maintain_visual_memory]
+    params:
+      name: MusicDirector
+      instruction: ['You are the Music Director, orchestrating adaptive audio experiences with REAL music playback.', 'Create
+          immersive soundscapes that adapt to the story:', '- Generate contextual music for different scene types with actual
+          audio streaming', '- Adapt emotional tones to match narrative moments with real-time audio', '- Layer character
+          themes with environmental atmosphere using Lyria RealTime', '- Enhance dramatic moments with musical emphasis and
+          live audio generation', 'MUSICAL STRATEGY:', '- Establishing scenes: Use trigger_music_playback for atmospheric
+          music that sets the mood', '- Character interactions: Blend character themes with scene atmosphere via real audio',
+        '- Choice moments: Build tension with musical crescendo using live streaming', '- Dramatic outcomes: Dynamic music
+          that matches the action intensity with real playback', '- Exploration: Ambient layers that encourage discovery through
+          actual audio', 'REAL AUDIO INTEGRATION:', '- Use trigger_music_playback to start actual Lyria RealTime audio streaming',
+        '- Music will be saved as WAV files and can be played back', '- Each scene gets real 48kHz stereo audio generation',
+        '- Audio adapts in real-time to story context and player choices', '- Use test_lyria_audio_generation to test the
+          audio system', Use trigger_music_playback and orchestrate_adaptive_music to create immersive musical experiences
+          with actual audio output.]
+  ultimate_cinematic_system:
+    type: instance
+    params:
+      name: UltimateCinematicAIDungeonMaster
+      sub_agents: [cinematic_director, visual_consistency_manager, character_artist, experience_designer, music_director]
+  visual_consistency_manager:
+    type: instance
+    models: [gemini-2.0-flash-exp]
+    tools: [generate_establishing_scene, create_character_portrait, maintain_visual_memory]
+    params:
+      name: VisualConsistencyManager
+      instruction: ['You are the Visual Consistency Manager, ensuring seamless visual continuity.', 'Your responsibilities:',
+        '- Maintain consistent character appearances across all scenes', '- Ensure location references are used for environmental
+          consistency', '- Manage the visual style DNA throughout the experience', '- Track character and location references
+          for future use', '- Generate establishing images for new locations with consistent style', 'CONSISTENCY RULES:',
+        '- Always reference existing character portraits when characters reappear', '- Use location references to maintain
+          environmental consistency', '- Apply the established art style and color palette to all generations', '- Track visual
+          elements for seamless continuity', Focus on creating a cohesive visual experience that feels like a unified artistic
+          vision.]
+
+models:
+  gemini-2.0-flash-exp:
+    type: literal
+    agents: [cinematic_director, visual_consistency_manager, character_artist, experience_designer, music_director]
+  gemini-2.5-pro:
+    type: literal
+    agents: [dream_director]
+
+tools:
+  begin_opening_scene:
+    type: function
+    agents: [dream_director]
+    params:
+      description: Start the story with an establishing scene and atmospheric music
+  continue_narrative:
+    type: function
+    agents: [dream_director]
+    params:
+      description: Continue the narrative with new developments and another choice
+  create_character_portrait:
+    type: function
+    agents: [visual_consistency_manager, character_artist]
+    params:
+      description: Creates character portraits only if no image has been generated yet
+  create_choice_previews:
+    type: function
+    agents: [cinematic_director, experience_designer]
+    params:
+      description: Creates choice moments with tension-building music (no preview images to save the one image)
+  create_dramatic_outcome:
+    type: function
+    agents: [experience_designer]
+    params:
+      description: Creates dramatic outcome with ONE clean image and dynamic music (NO SLOW VIDEOS)
+  create_story_climax:
+    type: function
+    agents: [dream_director]
+    params:
+      description: Create the climactic final scene of the story with EPIC VIDEO
+  generate_establishing_scene:
+    type: function
+    agents: [cinematic_director, visual_consistency_manager]
+    params:
+      description: Creates establishing scenes with minimal media (1 image per experience)
+  generate_scene_music:
+    type: function
+    agents: [dream_director]
+    params:
+      description: Generate single music track for scene (hackathon optimized)
+  get_story_status:
+    type: function
+    agents: [dream_director]
+    params:
+      description: Get current story progress and state
+  maintain_visual_memory:
+    type: function
+    agents: [cinematic_director, visual_consistency_manager, character_artist, experience_designer, music_director, dream_director]
+    params:
+      description: Maintains world memory with visual timeline snapshots
+  orchestrate_adaptive_music:
+    type: function
+    agents: [music_director]
+    params:
+      description: Orchestrates adaptive music for enhanced storytelling atmosphere with REAL audio generation
+  present_story_choice:
+    type: function
+    agents: [dream_director]
+    params:
+      description: Present meaningful choices to the user with tension-building music using AI agent
+  resolve_user_choice:
+    type: function
+    agents: [dream_director]
+    params:
+      description: Resolve the user's choice with dramatic outcome using AI narrative generation
+  start_new_adventure:
+    type: function
+    agents: [dream_director]
+    params:
+      description: User describes the story they want to live - we create the full experience
+  test_lyria_audio_generation:
+    type: function
+    agents: [music_director]
+    params:
+      description: Test Lyria RealTime audio generation with debugging
+  trigger_music_playback:
+    type: function
+    agents: [music_director]
+    params:
+      description: Trigger music playback with scene-appropriate audio streaming
+
+teams:
+  ultimate_cinematic_system:
+    type: sequential
+    agents: [ultimate_cinematic_system, cinematic_director, visual_consistency_manager, character_artist, experience_designer,
+      music_director]
+
+imports:
+  agent: agent
+  Any: typing.Any
+  asyncio: asyncio
+  base64: base64
+  BaseModel: pydantic.BaseModel
+  begin_opening_scene: agent.begin_opening_scene
+  BytesIO: io.BytesIO
+  continue_narrative: agent.continue_narrative
+  CORSMiddleware: fastapi.middleware.cors.CORSMiddleware
+  create_epic_climax_video: agent.create_epic_climax_video
+  create_single_choice_image: agent.create_single_choice_image
+  create_story_climax: agent.create_story_climax
+  dataclass: dataclasses.dataclass
+  datetime: datetime.datetime
+  Dict: typing.Dict
+  FastAPI: fastapi.FastAPI
+  field: dataclasses.field
+  FileResponse: fastapi.responses.FileResponse
+  game_state: agent.game_state
+  genai: google.genai
+  generate_direct_video: agent.generate_direct_video
+  generate_establishing_scene: agent.generate_establishing_scene
+  get_story_status: agent.get_story_status
+  HTTPException: fastapi.HTTPException
+  Image: PIL.Image
+  json: json
+  List: typing.List
+  LlmAgent: google.adk.agents.LlmAgent
+  load_dotenv: dotenv.load_dotenv
+  Optional: typing.Optional
+  orchestrate_adaptive_music: agent.orchestrate_adaptive_music
+  os: os
+  Path: pathlib.Path
+  present_story_choice: agent.present_story_choice
+  random: random
+  resolve_user_choice: agent.resolve_user_choice
+  SequentialAgent: google.adk.agents.SequentialAgent
+  start_new_adventure: agent.start_new_adventure
+  StaticFiles: fastapi.staticfiles.StaticFiles
+  sys: sys
+  threading: threading
+  time: time
+  ToolContext: google.adk.tools.ToolContext
+  traceback: traceback
+  types: google.genai.types
+  uvicorn: uvicorn
+  wave: wave
+  winsound: winsound
+
+functions:
+  api_info:
+    type: async
+    module: backend.app
+  begin_opening_scene:
+    type: sync
+    module: agents.agent
+    args: [tool_context]
+    params:
+      returns: Dict
+  conclude_adventure:
+    type: sync
+    module: agents.agent
+    args: [tool_context]
+    params:
+      returns: Dict
+  continue_narrative:
+    type: sync
+    module: agents.agent
+    args: [tool_context]
+    params:
+      returns: Dict
+  continue_story_with_music:
+    type: sync
+    module: agents.agent
+    args: [scene_description, emotional_tone, tool_context]
+    params:
+      returns: Dict
+  create_character_portrait:
+    type: sync
+    module: agents.agent
+    args: [npc_name, personality, context, emotion, tool_context]
+    params:
+      returns: Dict
+  create_choice_previews:
+    type: sync
+    module: agents.agent
+    args: [situation, choice_a, choice_b, choice_c, tool_context]
+    params:
+      returns: Dict
+  create_dramatic_outcome:
+    type: sync
+    module: agents.agent
+    args: [chosen_action, difficulty, context, tool_context]
+    params:
+      returns: Dict
+  create_epic_climax_video:
+    type: sync
+    module: agents.agent
+    args: [final_choice, context]
+    params:
+      returns: Dict
+  create_final_audio_track:
+    type: async
+    module: agents.agent
+    args: [scene_context, emotional_tone]
+  create_single_choice_image:
+    type: sync
+    module: agents.agent
+    args: [chosen_action, difficulty, context]
+    params:
+      returns: Dict
+  create_story_climax:
+    type: sync
+    module: agents.agent
+    args: [final_choice, tool_context]
+    params:
+      returns: Dict
+  generate_consistent_image:
+    type: sync
+    module: agents.agent
+    args: [prompt, character_references, location_reference]
+    params:
+      returns: Optional[str]
+  generate_direct_video:
+    type: sync
+    module: agents.agent
+    args: [prompt, emotional_tone]
+    params:
+      returns: Optional[str]
+  generate_establishing_scene:
+    type: sync
+    module: agents.agent
+    args: [location, mood, details, characters, tool_context]
+    params:
+      returns: Dict
+  generate_media:
+    type: async
+    module: backend.app
+    args: [request]
+  generate_scene_music:
+    type: sync
+    module: agents.agent
+    args: [scene_context, emotional_tone, tool_context]
+    params:
+      returns: Dict
+  generate_single_music_track:
+    type: async
+    module: agents.agent
+    args: [scene_description, emotional_tone]
+    params:
+      returns: str
+  generate_video_from_image_seed:
+    type: sync
+    module: agents.agent
+    args: [prompt, seed_image_path]
+    params:
+      returns: Optional[str]
+  get_file_extension:
+    type: sync
+    module: backend.app
+    args: [media_type]
+    params:
+      returns: str
+  get_media_file:
+    type: async
+    module: backend.app
+    args: [filename]
+  get_media_files:
+    type: async
+    module: backend.app
+  get_story_status:
+    type: sync
+    module: agents.agent
+    args: [tool_context]
+    params:
+      returns: Dict
+  handle_audio_chunk:
+    type: async
+    module: agents.agent
+    args: [audio_data]
+  health_check:
+    type: async
+    module: backend.app
+  initialize_background_music:
+    type: sync
+    module: agents.agent
+  initialize_complete_system:
+    type: async
+    module: agents.agent
+  initialize_lyria_session:
+    type: async
+    module: agents.agent
+  initialize_media_client:
+    type: sync
+    module: agents.agent
+  introduce_main_character:
+    type: sync
+    module: agents.agent
+    args: [character_name, character_role, tool_context]
+    params:
+      returns: Dict
+  maintain_visual_memory:
+    type: sync
+    module: agents.agent
+    args: [key, value, category, tool_context]
+    params:
+      returns: Dict
+  make_choice:
+    type: async
+    module: backend.app
+    args: [request]
+  orchestrate_adaptive_music:
+    type: sync
+    module: agents.agent
+    args: [scene_context, emotional_tone, characters, tool_context]
+    params:
+      returns: Dict
+  orchestrate_scene_music:
+    type: async
+    module: agents.agent
+    args: [scene_type, emotional_tone, characters]
+  play_final_audio_track:
+    type: async
+    module: agents.agent
+    args: [filename]
+  present_story_choice:
+    type: sync
+    module: agents.agent
+    args: [situation, choice_a, choice_b, choice_c, tool_context]
+    params:
+      returns: Dict
+  resolve_user_choice:
+    type: sync
+    module: agents.agent
+    args: [chosen_option, tool_context]
+    params:
+      returns: Dict
+  run_lyria_in_thread:
+    type: sync
+    module: agents.agent
+  run_music_generation:
+    type: sync
+    module: agents.agent
+  serve_frontend_files:
+    type: async
+    module: backend.app
+    args: [path]
+  serve_index:
+    type: async
+    module: backend.app
+  start_lyria_streaming_session:
+    type: async
+    module: agents.agent
+    args: [scene_context, emotional_tone, characters_present]
+  start_new_adventure:
+    type: sync
+    module: agents.agent
+    args: [user_story_request, tool_context]
+    params:
+      returns: Dict
+  start_story:
+    type: async
+    module: backend.app
+    args: [request]
+  story_status:
+    type: async
+    module: backend.app
+  test_lyria_audio_generation:
+    type: sync
+    module: agents.agent
+    args: [tool_context]
+    params:
+      returns: Dict
+  test_lyria_connection:
+    type: async
+    module: agents.agent
+  trigger_music_playback:
+    type: sync
+    module: agents.agent
+    args: [scene_description, mood, tool_context]
+    params:
+      returns: Dict
+  trigger_scene_music:
+    type: sync
+    module: agents.agent
+    args: [scene_type, emotional_tone, characters]
+
+variables:
+  GOOGLE_API_KEY:
+    type: env
+    params:
+      caller: [os.getenv, genai.Client]
+      path: [agents.agent]
+  PORT:
+    type: env
+    params:
+      caller: [os.environ.get]
+      path: [backend.app]
+
+files:
+  ../:
+    type: literal
+    actions: [read]
+    params:
+      caller: [get_media_files, get_media_file]
+  ../agents:
+    type: literal
+    actions: [read]
+    params:
+      caller: [get_media_files, get_media_file]
+  ./:
+    type: pattern
+    actions: [read]
+    params:
+      patterns: [generated_scene_*.png, generated_video_*.mp4, lyria_final_*.wav]
+      caller: [get_media_files]
+  chunk_file:
+    type: variable
+    actions: [read, delete]
+    params:
+      caller: [wave.open, os.path.basename, os.remove]
+  index.html:
+    type: literal
+    actions: [read]
+    params:
+      caller: [serve_index, serve_frontend_files]
+      path: [static_dir]
+  media_dir:
+    type: literal
+    actions: [read]
+    params:
+      caller: [Path('../agents')]
+  scan_dir:
+    type: variable
+    actions: [read]
+    params:
+      caller: [scan_dir.glob]
+  seed_image_path:
+    type: variable
+    actions: [read]
+    params:
+      caller: [os.path.exists, open]
+  static_dir:
+    type: literal
+    actions: [read]
+    params:
+      caller: [Path(static)]
+  test_lyria_audio.wav:
+    type: literal
+    actions: [write]
+    params:
+      caller: [open]
+      alias: [f]
+      variable: test_filename
